@@ -7,4 +7,5 @@ public interface IUserRepository : IBaseRepository<UserEntity>
 {
     public Task<bool> VerifyUserExistsAsync(Username username);
     public Task<bool> VerifyUserExistsAsync(NameComplete nameComplete);
+    public Task<bool> VerifyUserExistsAsync(Email email);
 }

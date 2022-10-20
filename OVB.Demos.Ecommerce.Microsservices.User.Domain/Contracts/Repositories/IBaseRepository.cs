@@ -6,6 +6,6 @@ public interface IBaseRepository<T> where T : class
     public Task AddRangeAsync(List<T> entity);
     public Task UpdateAsync(T entity);
     public Task DeleteAsync(T entity);  
-    public Task<T> GetAsync(Guid identifier);
+    public Task<T?> GetAsync(Guid identifier);
     public Task<List<T>> GetAllAsync();
 }

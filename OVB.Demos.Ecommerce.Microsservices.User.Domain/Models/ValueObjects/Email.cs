@@ -1,20 +1,15 @@
 ﻿namespace OVB.Demos.Ecommerce.Microsservices.User.Domain.Models.ValueObjects;
 
-public class Points
+public class Email
 {
-    private int Value { get; }
+    private string Value { get; }
 
-    public Points(int value)
+    public Email(string value)
     {
         Value = value;
     }
 
     public override string ToString()
-    {
-        return Value.ToString();
-    }
-
-    public int GetValue()
     {
         return Value;
     }
