@@ -5,7 +5,7 @@ namespace OVB.Demos.Ecommerce.Microsservices.User.Infrascructure.Data;
 
 public class DataContext : DbContext
 {
-    public DbSet<UserEntity> Users { get; set; }
+    public DbSet<UserEntity>? Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
