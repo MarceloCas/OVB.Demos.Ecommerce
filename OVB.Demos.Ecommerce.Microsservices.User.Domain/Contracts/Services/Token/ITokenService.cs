@@ -4,6 +4,7 @@ namespace OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Toke
 
 public interface ITokenService
 {
-    public void CreateToken(UserBase userbase);
-    public void RefreshToken(UserBase userBase);
+    public string JwtBearerKeyToken { get; }
+    public string CreateToken(UserBase userbase);
+    public string RefreshToken(UserBase userBase);
 }
