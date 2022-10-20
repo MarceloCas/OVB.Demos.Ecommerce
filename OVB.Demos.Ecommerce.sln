@@ -5,8 +5,6 @@ VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User", "User", "{61D36AC0-802C-4259-9497-D761EE9E60EB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Product", "Product", "{9A34F4D8-4214-4201-8D35-5969CCDC7978}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OVB.Demos.Ecommerce.Microsservices.User.Domain", "OVB.Demos.Ecommerce.Microsservices.User.Domain\OVB.Demos.Ecommerce.Microsservices.User.Domain.csproj", "{293DBFC9-C5CB-43D4-A07F-E2336DD68231}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OVB.Demos.Ecommerce.Microsservices.User.Infrascructure.Data", "OVB.Demos.Ecommerce.Microsservices.User.Infrascructure.Data\OVB.Demos.Ecommerce.Microsservices.User.Infrascructure.Data.csproj", "{9782630E-2487-49EC-A1A0-36990721B72B}"

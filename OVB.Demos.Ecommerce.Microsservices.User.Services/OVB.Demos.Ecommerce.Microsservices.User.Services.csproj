@@ -6,4 +6,16 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Handler\LoginAuthentication\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.24.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OVB.Demos.Ecommerce.Microsservices.User.Domain\OVB.Demos.Ecommerce.Microsservices.User.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

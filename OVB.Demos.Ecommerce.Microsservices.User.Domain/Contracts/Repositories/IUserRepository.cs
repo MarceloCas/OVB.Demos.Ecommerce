@@ -1,5 +1,10 @@
-﻿namespace OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Repositories;
+﻿using OVB.Demos.Ecommerce.Microsservices.User.Domain.Models.Entities;
+using OVB.Demos.Ecommerce.Microsservices.User.Domain.Models.ValueObjects;
 
-public interface IUserRepository
+namespace OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Repositories;
+
+public interface IUserRepository : IBaseRepository<UserEntity>
 {
+    public Task<bool> VerifyUserExistsAsync(Username username);
+    public Task<bool> VerifyUserExistsAsync(NameComplete nameComplete);
 }
