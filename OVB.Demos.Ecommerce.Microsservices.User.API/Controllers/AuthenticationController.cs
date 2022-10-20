@@ -1,22 +1,30 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace OVB.Demos.Ecommerce.Microsservices.User.API.Controllers;
+namespace OVB.Demos.Ecommerce.Microsservices.User.Api.Controllers;
 
-/// <summary>
-/// Controlador de Autenticação do Usuário
-/// </summary>
 [ApiController]
-[Route("api/v1/User/[controller]")]
+[Route("api/v1/[controller]")]
 public class AuthenticationController : ControllerBase
 {
     /// <summary>
-    /// Criar um novo usuári na plataforma
+    /// Criar uma nova conta de autenticação do usuário
     /// </summary>
-    /// <returns>Retorno é um resultado de uma ação em HTTP.</returns>
+    /// <returns>Retorno é um status HTTP</returns>
     [HttpPost]
-    [Route("Create")]
-    public ActionResult CreateAnNewUser()
+    [Route("CreateAuth")]
+    public ActionResult Create()
     {
-        return StatusCode(500);// Not implemented
+        return StatusCode(500);
+    }
+
+    /// <summary>
+    /// Logar usuário em uma autenticação
+    /// </summary>
+    /// <returns>Retorno é um status HTTP</returns>
+    [HttpGet]
+    [Route("LoginAuth")]
+    public ActionResult Login()
+    {
+        return StatusCode(500);
     }
 }

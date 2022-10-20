@@ -4,17 +4,17 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:57634",
-      "sslPort": 44386
+      "applicationUrl": "http://localhost:47857",
+      "sslPort": 44371
     }
   },
   "profiles": {
-    "OVB.Demos.Ecommerce.Microsservices.User.API": {
+    "OVB.Demos.Ecommerce.Microsservices.User.Api": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
-      "applicationUrl": "https://localhost:7263;http://localhost:5263",
+      "launchUrl": "swagger",
+      "applicationUrl": "https://localhost:7217;http://localhost:5217",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -22,7 +22,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
