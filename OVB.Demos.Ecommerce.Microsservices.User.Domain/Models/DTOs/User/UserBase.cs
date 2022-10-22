@@ -10,14 +10,14 @@ public abstract class UserBase
     public Username Username { get; }
     public NameComplete NameComplete { get; }
     public Points Points { get; }
-    public string Email { get; }
-    private PasswordEncrypted PasswordEncrypted { get; }
+    public Email Email { get; }
+    public PasswordEncrypted PasswordEncrypted { get; }
 
     // Access Properties
     public TypeUser TypeUser { get; }
 
     // Constructor
-    protected UserBase(Guid identifier, Username username, NameComplete nameComplete, TypeUser typeUser, Points points, PasswordEncrypted passwordEncrypted)
+    protected UserBase(Guid identifier, Username username, NameComplete nameComplete, TypeUser typeUser, Points points, PasswordEncrypted passwordEncrypted, Email email)
     {
         Identifier = identifier;
         Username = username;
@@ -25,5 +25,6 @@ public abstract class UserBase
         TypeUser = typeUser;
         Points = points;
         PasswordEncrypted = passwordEncrypted;
+        Email = email;
     }
 }
