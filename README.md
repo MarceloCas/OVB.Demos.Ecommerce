@@ -10,3 +10,4 @@ Esse repositório é destinado ao `desenvolvimento de um ecommerce`.
 - Clean Code
 - Entity Framework Core
 - JWT Bearer Token
+- Microsserviços

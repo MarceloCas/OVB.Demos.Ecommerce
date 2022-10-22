@@ -6,6 +6,9 @@ using OVB.Demos.Ecommerce.Microsservices.User.Domain.Models.ValueObjects;
 
 namespace OVB.Demos.Ecommerce.Microsservices.User.Infrascructure.Data.Repositories;
 
+/// <summary>
+/// Repositório para mudança no banco de dados de usuário
+/// </summary>
 public class UserRepository : IUserRepository
 {
     private readonly DataContext _dataContext;
