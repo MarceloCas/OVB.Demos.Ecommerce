@@ -2,11 +2,11 @@
 
 namespace OVB.Demos.Ecommerce.Microsservices.User.Services.Handler.CreateAuthentication;
 
-public class CreateAuthenticationHandler : HandlerBase<IResponse, IRequest>
+public class CreateAuthenticationHandler : HandlerBase<CreateAuthenticationResponse, CreateAuthenticationRequest>
 {
     public CreateAuthenticationHandler() : base(){}
 
-    public override IResponse Handle(IRequest request)
+    public override CreateAuthenticationResponse Handle(CreateAuthenticationRequest request)
     {
         throw new NotImplementedException();
     }

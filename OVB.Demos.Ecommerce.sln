@@ -18,12 +18,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OVB.Demos.Ecommerce.Micross
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OVB.Demos.Ecommerce.Microsservices.User.Api", "OVB.Demos.Ecommerce.Microsservices.User.Api\OVB.Demos.Ecommerce.Microsservices.User.Api.csproj", "{170C5702-7E3E-46C3-89FD-2E1992A6D361}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Products", "Products", "{32CC75A5-D3F8-4DAE-A56B-86E694C37D48}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Orders", "Orders", "{F0623C67-72E3-4B4A-A061-700198C2DC26}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Payment", "Payment", "{942A14AE-68B0-4780-86DC-AB334C7808F0}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
