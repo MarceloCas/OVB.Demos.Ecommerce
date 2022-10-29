@@ -9,5 +9,5 @@ public abstract class HandlerBase<T,K> where T : IResponse where K : IRequest
         Identifier = Guid.NewGuid();
     }
 
-    public abstract T Handle(K request);
+    public abstract Task<T> Handle(K request);
 }
