@@ -15,6 +15,12 @@ public class CreateAuthenticationHandler : HandlerBase<CreateAuthenticationRespo
         _userRepository = userRepository;
     }
 
+    /// <summary>
+    /// Handler para criar autenticação do usuário no microsserviço.
+    /// </summary>
+    /// <param name="request">Pedido de Requisição</param>
+    /// <returns>Retorno da Requisição</returns>
+    /// <exception cref="NotImplementedException"></exception>
     public async override Task<CreateAuthenticationResponse> Handle(CreateAuthenticationRequest request)
     {
         var validationResults = request.Validator.Validate(request.User);
