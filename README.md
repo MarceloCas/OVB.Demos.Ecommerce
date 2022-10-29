@@ -13,6 +13,7 @@ Esse repositório é destinado ao `desenvolvimento de um ecommerce`, utilizando a 
 - Adapter Pattern
 - Notification Pattern
 - Repository Pattern
+- Memory Cache
 - SOLID
 - Clean Code
 - Entity Framework Core
