@@ -2,7 +2,6 @@
 using RabbitMQ.Client.Events;
 using RabbitMQ.Client;
 using System.Text;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 
 namespace OVB.Demos.Ecommerce.Microsservices.User.Services.Messenger;
 

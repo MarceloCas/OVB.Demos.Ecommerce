@@ -1,8 +1,21 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Adapters;
+using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Cryptography;
+using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Handler;
+using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Messenger;
+using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Token;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Models.DTOs.User;
+using OVB.Demos.Ecommerce.Microsservices.User.Domain.Models.Entities;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Models.Validators;
+using OVB.Demos.Ecommerce.Microsservices.User.Infrascructure.Data;
+using OVB.Demos.Ecommerce.Microsservices.User.Services.Adapters;
+using OVB.Demos.Ecommerce.Microsservices.User.Services.Cryptography;
+using OVB.Demos.Ecommerce.Microsservices.User.Services.Handler.CreateAuthentication;
+using OVB.Demos.Ecommerce.Microsservices.User.Services.Messenger;
+using OVB.Demos.Ecommerce.Microsservices.User.Services.Token;
 
 namespace OVB.Demos.Ecommerce.Microsservices.User.Api;
 
@@ -21,7 +34,16 @@ public class Program
             options.ReportApiVersions = true;
         });
 
+        builder.Services.AddDbContext<DataContext>(p => p.UseSqlite("Data Source=microsservice.db", b => b.MigrationsAssembly("OVB.Demos.Ecommerce.Microsservices.User.Infrascructure.Data")));
+
         builder.Services.AddTransient<IValidator<UserBase>, CreateUserValidator>();
+        builder.Services.AddTransient<ICryptographyService, CryptographyService>();
+        builder.Services.AddTransient<IMessengerService, MessengerService>();
+        builder.Services.AddTransient<ITokenService, TokenService>();
+        builder.Services.AddTransient<IAdapter<UserBase, UserEntity>, AdapterUserEntityToUser>();
+        builder.Services.AddTransient<IAdapter<UserEntity, UserBase>, AdapterUserToUserEntity>();
+
+        builder.Services.AddSingleton<HandlerBase<CreateAuthenticationResponse, CreateAuthenticationRequest>, CreateAuthenticationHandler>();
 
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen(options =>
