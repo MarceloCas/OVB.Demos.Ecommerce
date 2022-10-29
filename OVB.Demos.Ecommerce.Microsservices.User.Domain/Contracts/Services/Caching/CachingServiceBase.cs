@@ -6,18 +6,16 @@ namespace OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Cach
 public abstract class CachingServiceBase
 {
     private string IdentifierValue { get; }
-    private string Description { get; }
     private TypeCachingTimeService TypeCachingTimeService { get; }
     private TypeCachingService TypeCachingService { get; }
     public int Time { get; private set; }
 
-    protected CachingServiceBase(Guid identifier, TypeCachingTimeService typeCachingTimeService, TypeCachingService typeCachingService, string description)
+    protected CachingServiceBase(Guid identifier, TypeCachingTimeService typeCachingTimeService, TypeCachingService typeCachingService)
     {
         IdentifierValue = identifier.ToString();
         TypeCachingTimeService = typeCachingTimeService;
         TypeCachingService = typeCachingService;
         CreateCachingTime();
-        Description = description;
     }
 
     public virtual string GetCachingServiceDeclarationDescription()
@@ -25,8 +23,7 @@ public abstract class CachingServiceBase
         var stringBuilder = new StringBuilder();
         stringBuilder.Append(IdentifierValue);
         stringBuilder.Append("_");
-        stringBuilder.Append("RequestService_");
-        stringBuilder.Append(Description);
+        stringBuilder.Append("RequestService");
         return stringBuilder.ToString();
     }
 
