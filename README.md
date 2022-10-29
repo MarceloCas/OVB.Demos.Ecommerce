@@ -10,8 +10,12 @@ Esse repositório é destinado ao `desenvolvimento de um ecommerce`, utilizando a 
 
 - ASP.NET 6
 - Command Pattern
+- Adapter Pattern
+- Notification Pattern
+- Repository Pattern
 - SOLID
 - Clean Code
 - Entity Framework Core
 - JWT Bearer Token
 - Microsserviços
+- RabbitMQ
