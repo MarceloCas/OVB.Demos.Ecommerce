@@ -21,9 +21,10 @@ public abstract class CachingServiceBase
     public virtual string GetCachingServiceDeclarationDescription()
     {
         var stringBuilder = new StringBuilder();
-        stringBuilder.Append(IdentifierValue);
-        stringBuilder.Append("_");
-        stringBuilder.Append("RequestService");
+        stringBuilder.Append(IdentifierValue + "_");
+        stringBuilder.Append("RequestService_");
+        stringBuilder.Append(TypeCachingService.ToString() + "_");
+        stringBuilder.Append(TypeCachingTimeService.ToString());
         return stringBuilder.ToString();
     }
 
