@@ -34,6 +34,8 @@ public class Program
             options.ReportApiVersions = true;
         });
 
+        builder.Services.AddMemoryCache();
+
         builder.Services.AddDbContext<DataContext>(p => p.UseSqlite("Data Source=microsservice.db", b => b.MigrationsAssembly("OVB.Demos.Ecommerce.Microsservices.User.Infrascructure.Data")));
 
         builder.Services.AddTransient<IValidator<UserBase>, CreateUserValidator>();
@@ -52,7 +54,7 @@ public class Program
             {
                 Version = "v1",
                 Title = "Ecommerce",
-                Description = "Desenvolvimento de um mercado online de atacado e varejo de produtos",
+                Description = "Desenvolvimento de um mercado online de atacado e varejo de produtos",34
                 Contact = new OpenApiContact()
                 {
                     Name = "Otávio Villas Boas Simoncini Carmanini",
