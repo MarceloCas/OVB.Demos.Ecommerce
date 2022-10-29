@@ -30,6 +30,6 @@ public abstract class CachingServiceBase
 
     protected virtual void CreateCachingTime()
     {
-        Time = 2;
+        Time = 1;
     }
 }
