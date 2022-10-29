@@ -5,7 +5,7 @@ namespace OVB.Demos.Ecommerce.Microsservices.User.Domain.Models.DTOs.User;
 
 public class UserStandard : UserBase
 {
-    public UserStandard(Guid identifier, Username username, NameComplete nameComplete, TypeUser typeUser, Points points, PasswordEncrypted passwordEncrypted, Email email) : base(identifier, username, nameComplete, TypeUser.Standard, points, passwordEncrypted, email)
+    public UserStandard(Guid identifier, Username username, NameComplete nameComplete, Points points, PasswordEncrypted passwordEncrypted, Email email) : base(identifier, username, nameComplete, TypeUser.Standard, points, passwordEncrypted, email)
     {
     }
 }

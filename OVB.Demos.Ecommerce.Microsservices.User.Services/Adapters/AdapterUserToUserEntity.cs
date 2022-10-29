@@ -8,6 +8,6 @@ public class AdapterUserToUserEntity : IAdapter<UserEntity, UserBase>
 {
     public UserEntity Adapt(UserBase target)
     {
-        throw new NotImplementedException();
+        return new UserEntity(target.Identifier, target.Username.ToString(), target.NameComplete.ToString(), target.TypeUser.ToString(), target.Email.ToString(), target.PasswordEncrypted.ToString());
     }
 }
