@@ -21,7 +21,7 @@ public class Program
             options.ReportApiVersions = true;
         });
 
-        builder.Services.AddTransient<IValidator<UserBase>, UserValidator>();
+        builder.Services.AddTransient<IValidator<UserBase>, CreateUserValidator>();
 
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen(options =>

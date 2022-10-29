@@ -4,9 +4,9 @@ using System.Text.RegularExpressions;
 
 namespace OVB.Demos.Ecommerce.Microsservices.User.Domain.Models.Validators;
 
-public class UserValidator : AbstractValidator<UserBase>
+public class CreateUserValidator : AbstractValidator<UserBase>
 {
-    public UserValidator()
+    public CreateUserValidator()
     {
         RuleFor(p => p.Identifier).NotEmpty().WithMessage("The identifier is required.");
         RuleFor(p => p.Identifier).NotNull().WithMessage("The identifier is required.");
