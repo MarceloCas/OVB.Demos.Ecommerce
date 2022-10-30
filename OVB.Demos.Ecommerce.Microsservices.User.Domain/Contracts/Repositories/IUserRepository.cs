@@ -5,7 +5,7 @@ namespace OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Repositories;
 
 public interface IUserRepository : IBaseRepository<UserEntity>
 {
-    public Task<bool> VerifyUserExistsAsync(Username username);
-    public Task<bool> VerifyUserExistsAsync(NameComplete nameComplete);
-    public Task<bool> VerifyUserExistsAsync(Email email);
+    public Task<bool> VerifyUserExistsAsyncWithUsername(string username);
+    public Task<bool> VerifyUserExistsAsyncWithNameComplete(string nameComplete);
+    public Task<bool> VerifyUserExistsAsyncWithEmail(string email);
 }

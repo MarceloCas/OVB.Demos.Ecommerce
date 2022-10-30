@@ -27,14 +27,14 @@ public class CreateAuthenticationHandler : HandlerBase<CreateAuthenticationRespo
         if (validationResults.IsValid == true)
         {
             // Verificar se email não é utilizado
-            bool emailExists = await _userRepository.VerifyUserExistsAsync(request.User.Email);
+            bool emailExists = await _userRepository.VerifyUserExistsAsyncWithEmail(request.User.Email);
             if (emailExists == true)
             {
                 validationResults.Errors.Add(new ValidationFailure("Email", "Email needs to be unusable"));
                 return new CreateAuthenticationResponse(Guid.NewGuid(), 404, validationResults.Errors);
             }
 
-            bool usernameExists = await _userRepository.VerifyUserExistsAsync(request.User.Username);
+            bool usernameExists = await _userRepository.VerifyUserExistsAsyncWithUsername(request.User.Username);
             if (usernameExists == true)
             {
                 validationResults.Errors.Add(new ValidationFailure("Username", "Username needs to be unusable"));

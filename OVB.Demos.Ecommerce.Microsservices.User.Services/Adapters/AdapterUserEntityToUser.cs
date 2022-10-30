@@ -17,6 +17,6 @@ public class AdapterUserEntityToUser : IAdapter<UserBase, UserEntity>
     /// <returns>Entidade da Orientação a Objetos</returns>
     public UserBase Adapt(UserEntity target)
     {
-        return new UserStandard(target.Identifier, new Username(target.Username), new NameComplete(target.NameComplete), new Points(target.Points), new PasswordEncrypted(target.Password), new Email(target.Email));
+        return new UserStandard(target.Identifier, target.Username, target.NameComplete, target.Points, target.Password, target.Email);
     }
 }

@@ -11,11 +11,11 @@ public abstract class UserBase
     #region Properties
     // User Properties
     public Guid Identifier { get; }
-    public Username Username { get; private set; }
-    public NameComplete NameComplete { get; private set; }
-    public Points Points { get; private set; }
-    public Email Email { get; private set; }
-    public PasswordEncrypted PasswordEncrypted { get; private set; }
+    public string Username { get; private set; }
+    public string NameComplete { get; private set; }
+    public int Points { get; private set; }
+    public string Email { get; private set; }
+    public string PasswordEncrypted { get; private set; }
 
     // Access Properties
     public TypeUser TypeUser { get; }
@@ -23,7 +23,7 @@ public abstract class UserBase
 
     #region Constructor
     // Constructor
-    protected UserBase(Guid identifier, Username username, NameComplete nameComplete, TypeUser typeUser, Points points, PasswordEncrypted passwordEncrypted, Email email)
+    protected UserBase(Guid identifier, string username, string nameComplete, TypeUser typeUser, int points, string passwordEncrypted, string email)
     {
         Identifier = identifier;
         Username = username;

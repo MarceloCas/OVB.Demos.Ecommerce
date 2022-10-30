@@ -57,17 +57,17 @@ public class UserRepository : IUserRepository
         await SaveChanges();
     }
 
-    public Task<bool> VerifyUserExistsAsync(Username username)
+    public Task<bool> VerifyUserExistsAsyncWithUsername(string username)
     {
         return _dataContext.Users.Where(p => p.Username == username.ToString()).AnyAsync();
     }
 
-    public Task<bool> VerifyUserExistsAsync(NameComplete nameComplete)
+    public Task<bool> VerifyUserExistsAsyncWithNameComplete(string nameComplete)
     {
         return _dataContext.Users.Where(p => p.NameComplete == nameComplete.ToString()).AnyAsync();
     }
 
-    public Task<bool> VerifyUserExistsAsync(Email email)
+    public Task<bool> VerifyUserExistsAsyncWithEmail(string email)
     {
         return _dataContext.Users.Where(p => p.Email == email.ToString()).AnyAsync();
     }
