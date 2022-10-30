@@ -3,7 +3,7 @@ using System.Text;
 
 namespace OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Caching;
 
-public abstract class CachingServiceBase
+public abstract class CachingServiceBase : ICacheInformation
 {
     private string IdentifierValue { get; }
     private TypeCachingTimeService TypeCachingTimeService { get; }
