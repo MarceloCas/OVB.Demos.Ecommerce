@@ -46,11 +46,10 @@ public class Program
         builder.Services.AddTransient<ITokenService, TokenService>();
         builder.Services.AddTransient<IAdapter<UserBase, UserEntity>, AdapterUserEntityToUser>();
         builder.Services.AddTransient<IAdapter<UserEntity, UserBase>, AdapterUserToUserEntity>();
+        builder.Services.AddTransient<HandlerBase<CreateAuthenticationResponse, CreateAuthenticationRequest>, CreateAuthenticationHandler>();
 
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<IBaseRepository<UserEntity>, UserRepository>();
-
-        builder.Services.AddSingleton<HandlerBase<CreateAuthenticationResponse, CreateAuthenticationRequest>, CreateAuthenticationHandler>();
 
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen(options =>

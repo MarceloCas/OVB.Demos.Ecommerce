@@ -63,7 +63,6 @@ public class CreateAuthenticationHandler : HandlerBase<CreateAuthenticationRespo
 
                 return new CreateAuthenticationResponse(Guid.NewGuid(), 200);
             });
-
             return requestCache;
         }
         else

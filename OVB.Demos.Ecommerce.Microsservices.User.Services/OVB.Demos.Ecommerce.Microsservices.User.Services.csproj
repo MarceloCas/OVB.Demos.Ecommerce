@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Handler\LoginAuthentication\" />
-    <Folder Include="Caching\" />
   </ItemGroup>
 
   <ItemGroup>
