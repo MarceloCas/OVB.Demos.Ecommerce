@@ -2,6 +2,7 @@ using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Repositories;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Adapters;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Cryptography;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Handler;
@@ -11,6 +12,7 @@ using OVB.Demos.Ecommerce.Microsservices.User.Domain.Models.DTOs.User;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Models.Entities;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Models.Validators;
 using OVB.Demos.Ecommerce.Microsservices.User.Infrascructure.Data;
+using OVB.Demos.Ecommerce.Microsservices.User.Infrascructure.Data.Repositories;
 using OVB.Demos.Ecommerce.Microsservices.User.Services.Adapters;
 using OVB.Demos.Ecommerce.Microsservices.User.Services.Cryptography;
 using OVB.Demos.Ecommerce.Microsservices.User.Services.Handler.CreateAuthentication;
@@ -45,6 +47,9 @@ public class Program
         builder.Services.AddTransient<IAdapter<UserBase, UserEntity>, AdapterUserEntityToUser>();
         builder.Services.AddTransient<IAdapter<UserEntity, UserBase>, AdapterUserToUserEntity>();
 
+        builder.Services.AddScoped<IUserRepository, UserRepository>();
+        builder.Services.AddScoped<IBaseRepository<UserEntity>, UserRepository>();
+
         builder.Services.AddSingleton<HandlerBase<CreateAuthenticationResponse, CreateAuthenticationRequest>, CreateAuthenticationHandler>();
 
         builder.Services.AddEndpointsApiExplorer();
@@ -54,7 +59,7 @@ public class Program
             {
                 Version = "v1",
                 Title = "Ecommerce",
-                Description = "Desenvolvimento de um mercado online de atacado e varejo de produtos",34
+                Description = "Desenvolvimento de um mercado online de atacado e varejo de produtos",
                 Contact = new OpenApiContact()
                 {
                     Name = "Otávio Villas Boas Simoncini Carmanini",

@@ -23,7 +23,7 @@ public abstract class CachingServiceBase
         var stringBuilder = new StringBuilder();
         stringBuilder.Append(IdentifierValue + "_");
         stringBuilder.Append("RequestService_");
-        stringBuilder.Append(TypeCachingService.ToString() + "_");
+        stringBuilder.Append(GetTypeCachingService() + "_");
         stringBuilder.Append(TypeCachingTimeService.ToString());
         return stringBuilder.ToString();
     }
@@ -31,5 +31,10 @@ public abstract class CachingServiceBase
     protected virtual void CreateCachingTime()
     {
         Time = 1;
+    }
+
+    protected string GetTypeCachingService()
+    {
+        return TypeCachingService.ToString();
     }
 }
