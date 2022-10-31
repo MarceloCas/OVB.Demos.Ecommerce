@@ -5,7 +5,6 @@ using Microsoft.OpenApi.Models;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Repositories;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Adapters;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Cryptography;
-using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Handler;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Messenger;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Token;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Models.DTOs.User;
@@ -15,7 +14,6 @@ using OVB.Demos.Ecommerce.Microsservices.User.Infrascructure.Data;
 using OVB.Demos.Ecommerce.Microsservices.User.Infrascructure.Data.Repositories;
 using OVB.Demos.Ecommerce.Microsservices.User.Services.Adapters;
 using OVB.Demos.Ecommerce.Microsservices.User.Services.Cryptography;
-using OVB.Demos.Ecommerce.Microsservices.User.Services.Handler.CreateAuthentication;
 using OVB.Demos.Ecommerce.Microsservices.User.Services.Messenger;
 using OVB.Demos.Ecommerce.Microsservices.User.Services.Token;
 
@@ -40,13 +38,12 @@ public class Program
 
         builder.Services.AddDbContext<DataContext>(p => p.UseSqlite("Data Source=microsservice.db", b => b.MigrationsAssembly("OVB.Demos.Ecommerce.Microsservices.User.Infrascructure.Data")));
 
-        builder.Services.AddTransient<IValidator<UserBase>, CreateUserValidator>();
-        builder.Services.AddTransient<ICryptographyService, CryptographyService>();
-        builder.Services.AddTransient<IMessengerService, MessengerService>();
-        builder.Services.AddTransient<ITokenService, TokenService>();
-        builder.Services.AddTransient<IAdapter<UserBase, UserEntity>, AdapterUserEntityToUser>();
-        builder.Services.AddTransient<IAdapter<UserEntity, UserBase>, AdapterUserToUserEntity>();
-        builder.Services.AddTransient<HandlerBase<CreateAuthenticationResponse, CreateAuthenticationRequest>, CreateAuthenticationHandler>();
+        builder.Services.AddSingleton<IValidator<UserBase>, CreateUserValidator>();
+        builder.Services.AddSingleton<ICryptographyService, CryptographyService>();
+        builder.Services.AddSingleton<IMessengerService, MessengerService>();
+        builder.Services.AddSingleton<ITokenService, TokenService>();
+        builder.Services.AddSingleton<IAdapter<UserBase, UserEntity>, AdapterUserEntityToUser>();
+        builder.Services.AddSingleton<IAdapter<UserEntity, UserBase>, AdapterUserToUserEntity>();
 
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<IBaseRepository<UserEntity>, UserRepository>();

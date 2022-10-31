@@ -38,26 +38,26 @@ public abstract class UserBase
     #region General Methods
     public virtual void IncrementPoints(int quantity)
     {
-        var actualPoints = Points.GetValue();
-        Points = new Points(actualPoints + quantity);
+        var actualPoints = Points;
+        Points = actualPoints + quantity;
     }
 
-    public void ChangeEmail(Email email)
+    public void ChangeEmail(string email)
     {
         Email = email;
     }
 
-    public void ChangeNameComplete(NameComplete nameComplete)
+    public void ChangeNameComplete(string nameComplete)
     {
         NameComplete = nameComplete;
     }
 
-    public void ChangeUsername(Username username)
+    public void ChangeUsername(string username)
     {
         Username = username;
     }
 
-    public void ChangePassword(PasswordEncrypted passwordEncrypted)
+    public void ChangePassword(string passwordEncrypted)
     {
         PasswordEncrypted = passwordEncrypted;
     }

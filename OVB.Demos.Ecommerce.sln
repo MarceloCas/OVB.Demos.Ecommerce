@@ -18,6 +18,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OVB.Demos.Ecommerce.Micross
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OVB.Demos.Ecommerce.Microsservices.User.Api", "OVB.Demos.Ecommerce.Microsservices.User.Api\OVB.Demos.Ecommerce.Microsservices.User.Api.csproj", "{170C5702-7E3E-46C3-89FD-2E1992A6D361}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVB.Demos.Ecommerce.Microsservices.User.Tests", "OVB.Demos.Ecommerce.Microsservices.User.Tests\OVB.Demos.Ecommerce.Microsservices.User.Tests.csproj", "{18611258-3831-4357-B08C-A9F447889980}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{170C5702-7E3E-46C3-89FD-2E1992A6D361}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{170C5702-7E3E-46C3-89FD-2E1992A6D361}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{170C5702-7E3E-46C3-89FD-2E1992A6D361}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18611258-3831-4357-B08C-A9F447889980}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18611258-3831-4357-B08C-A9F447889980}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18611258-3831-4357-B08C-A9F447889980}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18611258-3831-4357-B08C-A9F447889980}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +55,7 @@ Global
 		{9782630E-2487-49EC-A1A0-36990721B72B} = {61D36AC0-802C-4259-9497-D761EE9E60EB}
 		{4BF38BC5-E25C-4540-8BD3-4FE49E50B759} = {61D36AC0-802C-4259-9497-D761EE9E60EB}
 		{170C5702-7E3E-46C3-89FD-2E1992A6D361} = {61D36AC0-802C-4259-9497-D761EE9E60EB}
+		{18611258-3831-4357-B08C-A9F447889980} = {61D36AC0-802C-4259-9497-D761EE9E60EB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E5E8158D-197D-4B33-9CB4-8BDB99C87DC4}

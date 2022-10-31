@@ -8,6 +8,6 @@ public class AdapterUserToUserEntity : IAdapter<UserEntity, UserBase>
 {
     public UserEntity Adapt(UserBase target)
     {
-        return new UserEntity(target.Identifier, target.Username.ToString(), target.NameComplete.ToString(), target.TypeUser.ToString(), target.Email.ToString(), target.PasswordEncrypted.ToString());
+        return new UserEntity(target.Identifier, target.Username, target.NameComplete, target.Points, target.Email, target.PasswordEncrypted, target.TypeUser.ToString());
     }
 }

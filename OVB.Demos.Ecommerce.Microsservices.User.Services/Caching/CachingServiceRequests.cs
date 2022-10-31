@@ -7,7 +7,7 @@ public class CachingServiceRequests : CachingServiceBase
 {
     private string Description { get; set; }
 
-    public CachingServiceRequests(Guid identifier, TypeCachingTimeService typeCachingTimeService, TypeCachingService typeCachingService, string description) : base(identifier, TypeCachingTimeService.Fast, TypeCachingService.Request)
+    public CachingServiceRequests(Guid identifier, string description) : base(identifier, TypeCachingTimeService.Fast, TypeCachingService.Request)
     {
         Description = description;
     }
