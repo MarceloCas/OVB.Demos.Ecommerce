@@ -26,6 +26,8 @@ public class CreateAuthenticationHandler : HandlerBase<CreateAuthenticationRespo
     /// <param name="userRepository">Serviços de Repositório</param>
     /// <param name="cacheInformation">Implementação</param>
     /// <param name="memoryCache">Serviços de Cache de Memória</param>
+    /// <param name="cryptographyService">Serviços de Criptografia</param>
+    /// <param name="loggingService">Serviços de log da aplicação</param>
     public CreateAuthenticationHandler(
         IUserRepository userRepository, 
         ICacheInformation cacheInformation, 
