@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Repositories;
+using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Cryptography;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Handler;
+using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Logging;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Models.DTOs.User;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Models.Validators;
 using OVB.Demos.Ecommerce.Microsservices.User.Services.Caching;
@@ -22,14 +24,16 @@ public class AuthenticationController : ControllerBase
     [Route("CreateAuth")]
     [Produces("application/json")]
     [Consumes("application/json")]
-    public async Task<CreateAuthenticationResponse> Create([FromServices] IUserRepository userRepository, [FromServices] IMemoryCache memoryCache,
+    public async Task<CreateAuthenticationResponse> Create(
+        [FromServices] IUserRepository userRepository, [FromServices] IMemoryCache memoryCache, 
+        [FromServices] ILoggingService loggingService, [FromServices] ICryptographyService cryptographyService
         [FromHeader][Required] string username, 
         [FromHeader][Required] string email, 
         [FromHeader][Required] string password,
         [FromHeader][Required] string nameComplete)
     {
         var requestIdentifier = Guid.NewGuid();
-        var handler = new CreateAuthenticationHandler(userRepository, new CachingServiceRequests(requestIdentifier, "CreateAuthentication"), memoryCache);
+        var handler = new CreateAuthenticationHandler(userRepository, new CachingServiceRequests(requestIdentifier, "CreateAuthentication"), memoryCache, cryptographyService, loggingService);
         var response = await handler.Handle(new CreateAuthenticationRequest(requestIdentifier, DateTime.Now, new CreateUserValidator(), new UserStandard(Guid.NewGuid(), username, nameComplete, 0, password, email)));
         return response;
     }
