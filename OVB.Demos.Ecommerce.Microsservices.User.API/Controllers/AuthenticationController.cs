@@ -26,7 +26,7 @@ public class AuthenticationController : ControllerBase
     [Consumes("application/json")]
     public async Task<CreateAuthenticationResponse> Create(
         [FromServices] IUserRepository userRepository, [FromServices] IMemoryCache memoryCache, 
-        [FromServices] ILoggingService loggingService, [FromServices] ICryptographyService cryptographyService
+        [FromServices] ILoggingService loggingService, [FromServices] ICryptographyService cryptographyService,
         [FromHeader][Required] string username, 
         [FromHeader][Required] string email, 
         [FromHeader][Required] string password,
