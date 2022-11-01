@@ -4,6 +4,7 @@ using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Repositories;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Cryptography;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Handler;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Logging;
+using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Messenger;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Models.DTOs.User;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Models.Validators;
 using OVB.Demos.Ecommerce.Microsservices.User.Services.Caching;
@@ -27,13 +28,14 @@ public class AuthenticationController : ControllerBase
     public async Task<CreateAuthenticationResponse> Create(
         [FromServices] IUserRepository userRepository, [FromServices] IMemoryCache memoryCache, 
         [FromServices] ILoggingService loggingService, [FromServices] ICryptographyService cryptographyService,
+        [FromServices] IMessengerService messengerService,
         [FromHeader][Required] string username, 
         [FromHeader][Required] string email, 
         [FromHeader][Required] string password,
         [FromHeader][Required] string nameComplete)
     {
         var requestIdentifier = Guid.NewGuid();
-        var handler = new CreateAuthenticationHandler(userRepository, new CachingServiceRequests(requestIdentifier, "CreateAuthentication"), memoryCache, cryptographyService, loggingService);
+        var handler = new CreateAuthenticationHandler(userRepository, new CachingServiceRequests(requestIdentifier, "CreateAuthentication"), memoryCache, cryptographyService, loggingService, messengerService);
         var response = await handler.Handle(new CreateAuthenticationRequest(requestIdentifier, DateTime.Now, new CreateUserValidator(), new UserStandard(Guid.NewGuid(), username, nameComplete, 0, password, email)));
         return response;
     }

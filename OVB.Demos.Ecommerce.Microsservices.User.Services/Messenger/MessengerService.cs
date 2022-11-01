@@ -15,9 +15,9 @@ public class MessengerService : IMessengerService
 
     public MessengerService()
     {
-        HostnameService = Environment.GetEnvironmentVariable("RABBITMQ_URL")!.ToString();
+        HostnameService = Environment.GetEnvironmentVariable("RABBITMQ_HOSTNAME")!.ToString();
         PasswordService = Environment.GetEnvironmentVariable("RABBITMQ_PASSWORD")!.ToString();
-        UsernameService = Environment.GetEnvironmentVariable("RABBITMQ_USERNAME")!.ToString();
+        UsernameService = Environment.GetEnvironmentVariable("RABBITMQ_USER")!.ToString();
         VirtualHostService = Environment.GetEnvironmentVariable("RABBITMQ_VIRTUALHOST")!.ToString();
         PortService = 5672;
     }

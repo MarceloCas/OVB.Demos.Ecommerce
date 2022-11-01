@@ -5,6 +5,7 @@ using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Caching;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Cryptography;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Handler;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Logging;
+using OVB.Demos.Ecommerce.Microsservices.User.Domain.Contracts.Services.Messenger;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Models.Entities;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Models.Validators;
 using OVB.Demos.Ecommerce.Microsservices.User.Domain.Models.ValueObjects;
@@ -19,6 +20,7 @@ public class CreateAuthenticationHandler : HandlerBase<CreateAuthenticationRespo
     private readonly ICacheInformation _cacheInformation;
     private readonly ICryptographyService _cryptographyService;
     private readonly ILoggingService _loggingService;
+    private readonly IMessengerService _messengerService;
 
     /// <summary>
     /// Construtor para o Handler de Criação de Autenticação do Usuário
@@ -33,7 +35,8 @@ public class CreateAuthenticationHandler : HandlerBase<CreateAuthenticationRespo
         ICacheInformation cacheInformation, 
         IMemoryCache memoryCache, 
         ICryptographyService cryptographyService, 
-        ILoggingService loggingService) 
+        ILoggingService loggingService,
+        IMessengerService messengerService) 
         : base()
     {
         _userRepository = userRepository;
@@ -41,6 +44,7 @@ public class CreateAuthenticationHandler : HandlerBase<CreateAuthenticationRespo
         _memoryCache = memoryCache;
         _cryptographyService = cryptographyService;
         _loggingService = loggingService;
+        _messengerService = messengerService;
     }
 
     /// <summary>
@@ -84,6 +88,8 @@ public class CreateAuthenticationHandler : HandlerBase<CreateAuthenticationRespo
                     // Insere o novo usuário no banco de dados
                     var userEntity = new UserEntity(request.User.Identifier, request.User.Username, request.User.NameComplete, request.User.Points, request.User.Email, passwordEncrypted, request.User.TypeUser.ToString());
                     await _userRepository.AddAsync(userEntity);
+
+                    _messengerService.SendMessage("CreateAuthenticationHandler", "Conta criada com sucesso!");
 
                     return new CreateAuthenticationResponse(Guid.NewGuid(), 200, validationResults.Errors);
                 });
