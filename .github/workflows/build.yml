@@ -1,36 +1,44 @@
-name: SonarCloud
+name: build-and-test
+
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    types: [opened, synchronize, reopened]
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+
 jobs:
   build:
-    name: Build and analyze
-    runs-on: windows-latest
+
+    runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/setup-dotnet@v3
-        with:
-          fetch-depth: 0 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: 6.0.x
-      - name: Install SonarCloud scanner
-        if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
-        shell: powershell
-        run: |
-          New-Item -Path .\.sonar\scanner -ItemType Directory
-          dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
-      - name: Restore dependencies
-        run: dotnet restore OVB.Demos.Ecommerce.Microsservices.User.Api\OVB.Demos.Ecommerce.Microsservices.User.Api.csproj
-      - name: Build and analyze
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        shell: powershell
-        run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"OtavioVB_OVB.Demos.Ecommerce\OVB.Demos.Ecommerce.Microsservices.User.Api" /o:"otaviovb" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-          dotnet build OVB.Demos.Ecommerce.Microsservices.User.Api\OVB.Demos.Ecommerce.Microsservices.User.Api.csproj --no-restore
-          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+    - name: Install Sonar Scanner
+      shell: pwsh
+      run: |
+        New-Item -Path ./.sonar/scanner -ItemType Directory
+        dotnet tool update dotnet-sonarscanner --tool-path ./.sonar/scanner
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build And Test
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      shell: pwsh
+      run: |
+        .\.sonar\scanner\dotnet-sonarscanner begin /k:"OtavioVB_OVB.Demos.Ecommerce" /o:"otaviovb" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+        dotnet build --no-restore
+        dotnet test --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+        .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"

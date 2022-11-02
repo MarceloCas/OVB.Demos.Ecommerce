@@ -11,6 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OVB.Demos.Ecommerce.Micross
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentação", "Documentação", "{550B4AD5-9015-429D-97E7-F205C3ADD1D9}"
 	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build.yml = .github\workflows\build.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -20,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OVB.Demos.Ecommerce.Micross
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OVB.Demos.Ecommerce.Microsservices.User.Tests", "OVB.Demos.Ecommerce.Microsservices.User.Tests\OVB.Demos.Ecommerce.Microsservices.User.Tests.csproj", "{18611258-3831-4357-B08C-A9F447889980}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVB.Demos.Ecommerce.Microsservices.User.Services.gRPC", "OVB.Demos.Ecommerce.Microsservices.User.Services.gRPC\OVB.Demos.Ecommerce.Microsservices.User.Services.gRPC.csproj", "{E2028DC6-E4F9-49D3-AC8F-C107D08810D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OVB.Demos.Ecommerce.Microsservices.User.Services.gRPC", "OVB.Demos.Ecommerce.Microsservices.User.Services.gRPC\OVB.Demos.Ecommerce.Microsservices.User.Services.gRPC.csproj", "{E2028DC6-E4F9-49D3-AC8F-C107D08810D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
