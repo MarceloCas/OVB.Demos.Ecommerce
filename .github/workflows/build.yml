@@ -32,9 +32,7 @@ jobs:
         dotnet tool update dotnet-sonarscanner --tool-path ./.sonar/scanner
     - name: Restore dependencies
       shell: cmd
-      uses: actions/setup-dotnet@v2
       run: | 
-        cd ..
         dotnet restore --source ../OVB.DemosEcommerce.Microsservices.User.Api/OVB.DemosEcommerce.Microsservices.User.Api.csproj
     - name: Build And Test
       env:
