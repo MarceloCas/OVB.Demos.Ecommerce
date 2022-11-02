@@ -31,6 +31,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"OtavioVB_OVB.Demos.Ecommerce" /o:"otaviovb" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"OtavioVB_OVB.Demos.Ecommerce\OVB.Demos.Ecommerce.Microsservices.User.Api" /o:"otaviovb" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           dotnet build OVB.Demos.Ecommerce.Microsservices.User.Api\OVB.Demos.Ecommerce.Microsservices.User.Api.csproj --no-restore
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
