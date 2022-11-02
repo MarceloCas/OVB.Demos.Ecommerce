@@ -23,6 +23,8 @@ jobs:
         run: |
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+      - name: Restore dependencies
+        run: dotnet restore OVB.Demos.Ecommerce.Microsservices.User.API/OVB.Demos.Ecommerce.Microsservices.User.API.csproj
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
