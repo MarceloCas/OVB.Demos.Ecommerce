@@ -18,7 +18,7 @@ public class LoggingService : ILoggingService
     public async Task AddNewLogErrorInformation(string errorMessage)
     {
         using var file = File.AppendText(LogsDirectory);
-        await file.WriteLineAsync(errorMessage);
+        await file.WriteLineAsync(DateTime.Now.ToString() + " | " + errorMessage);
         await file.DisposeAsync();
     }
 }
