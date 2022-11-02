@@ -6,19 +6,27 @@ namespace OVB.Demos.Ecommerce.Microsservices.User.Services.Logging;
 public class LoggingService : ILoggingService
 {
     private readonly string CurrentDirectory;
-    private readonly string LogsDirectory;
-
+    private readonly string LogsErrorDirectory;
+    private readonly string LogsSuccessDirectory;
 
     public LoggingService()
     {
         CurrentDirectory = Environment.CurrentDirectory;
-        LogsDirectory = $@"{CurrentDirectory}\\logs.txt";
+        LogsErrorDirectory = $@"{CurrentDirectory}\\logs\\errorLogs.txt";
+        LogsSuccessDirectory = $@"{CurrentDirectory}\\logs\\successLogs.txt";
     }
 
     public async Task AddNewLogErrorInformation(string errorMessage)
     {
-        using var file = File.AppendText(LogsDirectory);
-        await file.WriteLineAsync(DateTime.Now.ToString() + " | " + errorMessage);
+        using var file = File.AppendText(LogsErrorDirectory);
+        await file.WriteLineAsync(DateTime.Now.ToString() + " | ERROR | " + errorMessage);
+        await file.DisposeAsync();
+    }
+
+    public async Task AddNewLogSuccessInformation(string successInformation)
+    {
+        using var file = File.AppendText(LogsSuccessDirectory);
+        await file.WriteLineAsync(DateTime.Now.ToString() + " | SUCCESS | " + successInformation);
         await file.DisposeAsync();
     }
 }

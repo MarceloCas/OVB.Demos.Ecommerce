@@ -47,8 +47,9 @@ public class AuthenticationController : ControllerBase
     [HttpGet]
     [Route("LoginAuth")]
     [Produces("application/json")]
-    public ActionResult Login()
+    public async Task<ActionResult> Login([FromServices] ILoggingService loggingService)
     {
+        await loggingService.AddNewLogErrorInformation("Teste");
         return StatusCode(500);
     }
 }
