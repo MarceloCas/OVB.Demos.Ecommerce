@@ -31,7 +31,10 @@ jobs:
         New-Item -Path ./.sonar/scanner -ItemType Directory
         dotnet tool update dotnet-sonarscanner --tool-path ./.sonar/scanner
     - name: Restore dependencies
-      run: dotnet restore --source ../../OVB.DemosEcommerce.Microsservices.User.Api/OVB.DemosEcommerce.Microsservices.User.Api.csproj
+      shell: cmd
+      run: | 
+        cd ..
+        dotnet restore --source ../OVB.DemosEcommerce.Microsservices.User.Api/OVB.DemosEcommerce.Microsservices.User.Api.csproj
     - name: Build And Test
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
