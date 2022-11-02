@@ -89,7 +89,7 @@ public class CreateAuthenticationHandler : HandlerBase<CreateAuthenticationRespo
                     var userEntity = new UserEntity(request.User.Identifier, request.User.Username, request.User.NameComplete, request.User.Points, request.User.Email, passwordEncrypted, request.User.TypeUser.ToString());
                     await _userRepository.AddAsync(userEntity);
 
-                    _messengerService.SendMessage("CreateAuthenticationHandler", "Conta criada com sucesso!");
+                    _messengerService.SendMessage("CREATE_AUTHENTICATION_HANDLER", $"CONTACRIADA&Username={userEntity.Username};Email={userEntity.Email};");
 
                     return new CreateAuthenticationResponse(Guid.NewGuid(), 200, validationResults.Errors);
                 });
