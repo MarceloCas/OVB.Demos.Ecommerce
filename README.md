@@ -1,5 +1,6 @@
 # Ecommerce Repository
 [![SonarCloud](https://github.com/OtavioVB/OVB.Demos.Ecommerce/actions/workflows/build.yml/badge.svg)](https://github.com/OtavioVB/OVB.Demos.Ecommerce/actions/workflows/build.yml)
+
 Esse repositório é destinado ao `desenvolvimento de um ecommerce`, utilizando a arquitetura de microsserviços e técnicas adequadas de desenvolvimento.
 
 ## Desenvolvedores
