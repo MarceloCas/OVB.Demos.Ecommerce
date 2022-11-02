@@ -18,6 +18,7 @@ using OVB.Demos.Ecommerce.Microsservices.User.Services.Cryptography;
 using OVB.Demos.Ecommerce.Microsservices.User.Services.Logging;
 using OVB.Demos.Ecommerce.Microsservices.User.Services.Messenger;
 using OVB.Demos.Ecommerce.Microsservices.User.Services.Token;
+using System.Reflection;
 
 namespace OVB.Demos.Ecommerce.Microsservices.User.Api;
 

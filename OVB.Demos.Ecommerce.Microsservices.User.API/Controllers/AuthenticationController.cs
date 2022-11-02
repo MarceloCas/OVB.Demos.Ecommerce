@@ -25,7 +25,7 @@ public class AuthenticationController : ControllerBase
     [Route("CreateAuth")]
     [Produces("application/json")]
     [Consumes("application/json")]
-    public async Task<CreateAuthenticationResponse> Create(
+    public async Task<IActionResult> Create(
         [FromServices] IUserRepository userRepository, [FromServices] IMemoryCache memoryCache, 
         [FromServices] ILoggingService loggingService, [FromServices] ICryptographyService cryptographyService,
         [FromServices] IMessengerService messengerService,
@@ -34,10 +34,19 @@ public class AuthenticationController : ControllerBase
         [FromHeader][Required] string password,
         [FromHeader][Required] string nameComplete)
     {
-        var requestIdentifier = Guid.NewGuid();
-        var handler = new CreateAuthenticationHandler(userRepository, new CachingServiceRequests(requestIdentifier, "CreateAuthentication"), memoryCache, cryptographyService, loggingService, messengerService);
-        var response = await handler.Handle(new CreateAuthenticationRequest(requestIdentifier, DateTime.Now, new CreateUserValidator(), new UserStandard(Guid.NewGuid(), username, nameComplete, 0, password, email)));
-        return response;
+        try
+        {
+            var requestIdentifier = Guid.NewGuid();
+            var handler = new CreateAuthenticationHandler(userRepository, new CachingServiceRequests(requestIdentifier, "CreateAuthentication"), memoryCache, cryptographyService, loggingService, messengerService);
+            var response = await handler.Handle(new CreateAuthenticationRequest(requestIdentifier, DateTime.Now, new CreateUserValidator(), new UserStandard(Guid.NewGuid(), username, nameComplete, 0, password, email)));
+            await loggingService.AddNewLogSuccessInformation($"{response.Status} | VALIDATION FAILURES = {response.ValidationFailures.Count} | CREATE USER AUTHENTICATION | {response.Identifier}");
+            return StatusCode(response.Status, response);
+        }
+        catch (Exception ex)
+        {
+            await loggingService.AddNewLogErrorInformation($"{ex.Message} | {ex.Source} | {ex.HelpLink}");
+            return StatusCode(500, new CreateAuthenticationResponse(Guid.NewGuid(), 500));
+        }
     }
 
     /// <summary>
